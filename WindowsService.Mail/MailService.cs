@@ -34,7 +34,7 @@ namespace WindowsService.Mail
 
         public void OnDebugInfiniteMod()
         {
-          Thread.Sleep(Timeout.Infinite);
+            Thread.Sleep(Timeout.Infinite);
         }
         #endregion
 
@@ -60,13 +60,14 @@ namespace WindowsService.Mail
         {
             try
             {
-                //Send Mail
+                //TODO:  Send a mail a result of an element
             }
             catch (Exception)
             {
-
+                //TODO: write log
                 throw;
             }
         }
+
     }
 }

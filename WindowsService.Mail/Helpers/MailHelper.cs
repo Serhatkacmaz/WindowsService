@@ -10,21 +10,19 @@ namespace WindowsService.Mail
 {
     internal class MailHelper
     {
-        public void SendMail(MailModel model)
+        public void SendMail(MailModel mailModel)
         {
-            SmtpClient smtpClient = new SmtpClient(ServiceSettings.Host, ServiceSettings.Port);
-            var mailMessage = new MailMessage(model.From, model.To)
+            using (SmtpClient smtpClient = new SmtpClient(ServiceConfiguration.Host, ServiceConfiguration.Port))
+            using (MailMessage mailMessage = new MailMessage(mailModel.From, mailModel.To))
             {
-                Subject = model.Subject,
-                Body = model.Body,
-                IsBodyHtml = model.IsBodyHtml
-            };
+                mailMessage.Subject = mailModel.Subject;
+                mailMessage.Body = mailModel.Body;
+                mailMessage.IsBodyHtml = mailModel.IsBodyHtml;
 
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Send(mailMessage);
-
-            mailMessage.Dispose();
-            smtpClient.Dispose();
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Send(mailMessage);
+            }
         }
+
     }
 }

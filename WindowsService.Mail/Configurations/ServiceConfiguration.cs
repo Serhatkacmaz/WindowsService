@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsService.Mail
 {
-    internal class ServiceSettings
+    internal class ServiceConfiguration
     {
         public static string Host { get; } = ConfigurationManager.AppSettings["Host"];
         public static string Smtp { get; } = ConfigurationManager.AppSettings["Smtp"];
