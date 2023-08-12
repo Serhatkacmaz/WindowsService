@@ -10,7 +10,6 @@ namespace WindowsService.Mail
     internal class ServiceConfiguration
     {
         public static string Host { get; } = ConfigurationManager.AppSettings["Host"];
-        public static string Smtp { get; } = ConfigurationManager.AppSettings["Smtp"];
         public static int Port { get; } = int.Parse(ConfigurationManager.AppSettings["Port"]);
     }
 }
